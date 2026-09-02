@@ -1,0 +1,29 @@
+{
+  "name": "hardware-showcase",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Inventário de hardware de um desktop AMD AM4, lido via WMI e nvidia-smi, apresentado como página em React + TypeScript.",
+  "homepage": "https://erickkadr.github.io/hardware-showcase/",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.1.0",
+    "gh-pages": "^6.3.0",
+    "oxlint": "^1.79.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.2"
+  }
+}
