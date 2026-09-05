@@ -10,7 +10,9 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist",
+    "jogos": "node scripts/atualizar-jogos.mjs",
+    "testar:analise": "esbuild scripts/testar-analise.ts --bundle --platform=node --format=esm --loader:.json=json --outfile=node_modules/.cache/teste.mjs --log-level=error && node node_modules/.cache/teste.mjs"
   },
   "dependencies": {
     "react": "^19.2.8",
@@ -21,6 +23,7 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.1.0",
+    "esbuild": "^0.28.2",
     "gh-pages": "^6.3.0",
     "oxlint": "^1.79.0",
     "typescript": "~6.0.2",

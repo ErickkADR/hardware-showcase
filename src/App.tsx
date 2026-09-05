@@ -1,5 +1,6 @@
 import { CardComponente } from './components/CardComponente';
 import { CardDiagnostico } from './components/CardDiagnostico';
+import { TesteJogo } from './components/TesteJogo';
 import { COMPONENTES, DIAGNOSTICOS, SISTEMA, COLETADO_EM } from './data/hardware';
 
 const NUMEROS = [
@@ -57,6 +58,7 @@ export default function App() {
           </div>
           <nav className="topo-nav">
             <a href="#pecas">Peças</a>
+            <a href="#jogos">Roda?</a>
             <a href="#diagnostico">Diagnóstico</a>
             <a href="#creditos">Créditos</a>
           </nav>
@@ -139,9 +141,27 @@ export default function App() {
           </div>
         </section>
 
+        <section className="container secao" id="jogos">
+          <div className="secao-cabeca">
+            <span className="secao-numero">02 · ESTE PC RODA?</span>
+            <h2>Digite um jogo e compare</h2>
+            <p>
+              A busca cruza os requisitos oficiais da Steam com o hardware desta página.
+              Processador e placa de vídeo são comparados por PassMark aproximado, e o
+              número em cada linha é a razão entre o que a máquina tem e o que o jogo pede.
+            </p>
+            <p>
+              São estimativas, e servem para separar "roda folgado" de "não roda", não para
+              prever FPS. Quando o requisito não cita modelo, a comparação cai para núcleos,
+              clock e VRAM, e a linha avisa.
+            </p>
+          </div>
+          <TesteJogo />
+        </section>
+
         <section className="container secao" id="diagnostico">
           <div className="secao-cabeca">
-            <span className="secao-numero">02 · DIAGNÓSTICO</span>
+            <span className="secao-numero">03 · DIAGNÓSTICO</span>
             <h2>O que os números revelam</h2>
             <p>
               {extenso(DIAGNOSTICOS.length).charAt(0).toUpperCase() +

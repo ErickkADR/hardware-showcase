@@ -25,6 +25,79 @@ Dois valores só apareceram por cruzamento de fontes:
 - **O tamanho do monitor.** O EDID informa só "LG ULTRAGEAR". As dimensões físicas
   (60 × 34 cm) dão 27 polegadas de diagonal, o que descarta o modelo de 24".
 
+## Este PC roda? (seção 02)
+
+A página tem um teste que cruza os requisitos oficiais da Steam com o hardware medido.
+Digite o nome do jogo e ele compara processador, vídeo, memória e espaço em disco.
+
+```bash
+npm run jogos               # monta a base a partir dos rankings públicos
+LIMITE=500 npm run jogos    # mais títulos, se valer a espera
+npm run testar:analise      # roda o parser contra a base inteira
+```
+
+### De onde vem a lista
+
+O script não tem lista fixa de jogos populares, porque ela envelhece. Ele une seis fontes
+públicas e deduplica:
+
+| Fonte | O que traz |
+|---|---|
+| `ISteamChartsService/GetMostPlayedGames` | os 100 mais jogados agora |
+| `store/api/featuredcategories` | top de vendas, novidades e promoções |
+| `ISteamChartsService/GetTopReleasesPages` | lançamentos que entraram no top mensal |
+| SteamSpy `top100in2weeks` | mais jogados nas duas últimas semanas |
+| SteamSpy `top100forever` | mais jogados de todos os tempos |
+| SteamSpy `top100owned` | mais vendidos de todos os tempos |
+
+Uma lista fixa de clássicos entra na frente de todas, para que Cyberpunk, Elden Ring e
+companhia não caiam fora quando saírem dos rankings.
+
+### Os dois limites reais
+
+**A Steam corta em torno de 200 chamadas por 5 minutos** no `appdetails` e responde 429.
+Por isso existe uma pausa de 1,3 s entre requisições e um backoff que espera 30 s, 60 s,
+90 s antes de desistir. É o que faz a coleta de algumas centenas de jogos levar minutos em
+vez de segundos.
+
+**O peso do arquivo.** A base é grande, e importá-la de `src/` a colocaria dentro do bundle
+JavaScript: todo visitante baixaria centenas de KB de requisitos de jogos só para ler a
+página. Por isso ela mora em `public/jogos.json` e é buscada por `fetch` quando a seção é
+usada, ficando no cache do navegador depois.
+
+### Por que a base é local e não uma consulta ao vivo
+
+A Steam serve os requisitos em `store.steampowered.com/api/appdetails`, mas não devolve
+`Access-Control-Allow-Origin`. Chamar de `erickkadr.github.io` é bloqueado pelo CORS do
+navegador. Proxies públicos resolveriam, só que o `allorigins` responde 520 e o
+`corsproxy.io` passou a exigir chave paga. Um site de portfólio que depende de proxy de
+terceiro quebra sozinho, então os dados são buscados por script e versionados.
+
+### Como a comparação funciona
+
+Processador e placa de vídeo viram um PassMark aproximado (`src/data/pontuacoes.ts`) e o
+resultado é a razão entre o que a máquina tem e o que o jogo pede. Quando o requisito cita
+alternativas equivalentes ("i7-6700 or Ryzen 5 1600"), vale a de menor exigência, já que
+basta atender uma delas.
+
+Duas armadilhas que o parser trata:
+
+- A Steam alterna o separador, escrevendo `Core i3 6300` com espaço e `FX-4350` com hífen.
+  O casamento é por regex montada a partir da chave, e o `(?!\d)` no fim evita que
+  `i5 750` case dentro de `i5-7500`, que é outro processador.
+- Jogos antigos não citam modelo, só "Dual core 2.8 GHz" ou "1GB VRAM". Nesses casos a
+  comparação cai para núcleos, clock e VRAM, e a linha avisa que foi por aí.
+
+Quando um critério é ilegível mas todo o resto passa, o veredito diz "provavelmente roda"
+em vez de "requisito vago": um requisito que não deu para ler não é o mesmo que um
+requisito reprovado, e chamar os dois de vago esconde a conclusão útil.
+
+São estimativas: separam "roda folgado" de "não roda", não preveem FPS. Na base atual de
+277 títulos, 267 rodam em algum nível e 10 não atingem o mínimo, todos os dez barrados no
+processador, o que é exatamente o gargalo apontado na seção de diagnóstico.
+
+O resultado é compartilhável por link: `?jogo=1091500` (appid) ou `?jogo=elden ring`.
+
 ## O que o software não consegue ler
 
 Quatro peças aparecem no site com o selo `informado` em vez de `medido`: a fonte, as quatro
