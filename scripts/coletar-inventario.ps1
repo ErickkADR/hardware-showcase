@@ -3,7 +3,7 @@
     Coleta o inventário de hardware da máquina e grava em inventario-completo.local.json.
 
 .DESCRIPTION
-    Gera o dump BRUTO, incluindo endereço MAC e números de série — por isso o arquivo de
+    Gera o dump BRUTO, incluindo endereço MAC e números de série. Por isso o arquivo de
     saída está no .gitignore e nunca deve ser versionado. Os dados publicados no site
     (src/data/hardware.ts) são a versão sanitizada deste dump.
 
@@ -44,7 +44,7 @@ $memoria = @(Get-CimInstance Win32_PhysicalMemory | ForEach-Object {
         clockAtualMHz   = $_.ConfiguredClockSpeed
         voltagemMV      = $_.ConfiguredVoltage
         partNumber      = $_.PartNumber.Trim()
-        numeroSerie     = $_.SerialNumber   # sensivel - nao publicar
+        numeroSerie     = $_.SerialNumber   # sensivel: nao publicar
     }
 })
 
@@ -65,7 +65,7 @@ $discos = @(Get-CimInstance Win32_DiskDrive | ForEach-Object {
         barramento  = if ($pd) { $pd.BusType } else { $_.InterfaceType }
         saude       = if ($pd) { $pd.HealthStatus } else { $null }
         particoes   = $_.Partitions
-        numeroSerie = $_.SerialNumber   # sensivel - nao publicar
+        numeroSerie = $_.SerialNumber   # sensivel: nao publicar
     }
 })
 
@@ -138,7 +138,7 @@ try {
             larguraCm    = $h
             alturaCm     = $v
             polegadas    = [math]::Round([math]::Sqrt(($h * $h) + ($v * $v)) / 2.54, 1)
-            numeroSerie  = Get-TextoEdid $ids[$i].SerialNumberID   # sensivel - nao publicar
+            numeroSerie  = Get-TextoEdid $ids[$i].SerialNumberID   # sensivel: nao publicar
         }
     }
 } catch {
@@ -150,13 +150,13 @@ $rede = @(Get-CimInstance Win32_NetworkAdapter -Filter 'PhysicalAdapter=True' | 
         nome           = $_.Name
         velocidadeMbps = if ($_.Speed) { [math]::Round($_.Speed / 1MB, 0) } else { $null }
         status         = $_.NetConnectionStatus
-        mac            = $_.MACAddress   # sensivel - nao publicar
+        mac            = $_.MACAddress   # sensivel: nao publicar
     }
 })
 
 $inventario = [ordered]@{
     coletadoEm = (Get-Date).ToString('yyyy-MM-dd HH:mm:ss')
-    aviso      = 'Contem MAC e numeros de serie. NAO versionar - ver .gitignore.'
+    aviso      = 'Contem MAC e numeros de serie. NAO versionar: ver .gitignore.'
     sistema    = [ordered]@{
         so          = $os.Caption
         versao      = $reg.DisplayVersion

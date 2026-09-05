@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react';
 //
 // A base é fixa de propósito. Condicioná-la ao comando ("/" fora do build) faz
 // `vite preview` servir na raiz enquanto o HTML já foi gerado apontando para
-// /hardware-showcase/ — os assets caem no fallback de SPA e voltam como index.html
+// /hardware-showcase/. Os assets caem no fallback de SPA e voltam como index.html
 // com status 200, o que rende uma página em branco sem nenhum erro no console.
 // Com a base fixa, dev e preview servem no mesmo caminho da produção.
 export default defineConfig({

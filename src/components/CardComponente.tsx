@@ -7,6 +7,9 @@ const ROTULO_CATEGORIA: Record<Componente['categoria'], string> = {
   video: 'Vídeo',
   armazenamento: 'Armazenamento',
   monitor: 'Monitor',
+  fonte: 'Fonte',
+  refrigeracao: 'Refrigeração',
+  gabinete: 'Gabinete',
 };
 
 interface Props {
@@ -14,8 +17,9 @@ interface Props {
 }
 
 export function CardComponente({ componente }: Props) {
-  const { foto, specs, ocupacao } = componente;
+  const { foto, specs, ocupacao, origem } = componente;
   const fotoExata = foto.fidelidade === 'exata';
+  const declarado = origem === 'declarado';
 
   return (
     <article className="card">
@@ -40,7 +44,20 @@ export function CardComponente({ componente }: Props) {
       </div>
 
       <div className="card-corpo">
-        <span className="card-categoria">{ROTULO_CATEGORIA[componente.categoria]}</span>
+        <div className="card-cabeca">
+          <span className="card-categoria">{ROTULO_CATEGORIA[componente.categoria]}</span>
+          <span
+            className={`selo-origem ${origem}`}
+            title={
+              declarado
+                ? 'Peça sem via de dados com a placa-mãe: nenhuma classe WMI a enumera, então a especificação veio do dono da máquina'
+                : 'Especificação lida do sistema via WMI/CIM ou nvidia-smi'
+            }
+          >
+            {declarado ? 'informado' : 'medido'}
+          </span>
+        </div>
+
         <h3>{componente.nome}</h3>
         <p className="card-fabricante">{componente.fabricante}</p>
         <p className="card-resumo">{componente.resumo}</p>

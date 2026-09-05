@@ -26,12 +26,13 @@ export const COMPONENTES: Componente[] = [
     categoria: 'processador',
     nome: 'Ryzen 5 3350G',
     fabricante: 'AMD',
-    resumo: 'APU Zen+ "Picasso" de 2019 — o gargalo real desta máquina.',
+    origem: 'medido',
+    resumo: 'APU Zen+ "Picasso" de 2019, o gargalo real desta máquina.',
     foto: {
       src: 'images/cpu.jpg',
       alt: 'APU AMD Ryzen 5 da série 3000G, vista do encapsulamento e dos pinos AM4',
       fidelidade: 'equivalente',
-      nota: 'Ryzen 5 3400G — mesmo die Picasso (Zen+ 12 nm) e mesmo socket AM4. O 3350G é peça OEM, sem fotografia oficial em acervo livre.',
+      nota: 'Ryzen 5 3400G, que usa o mesmo die Picasso (Zen+ 12 nm) e o mesmo socket AM4. O 3350G é peça OEM, sem fotografia oficial em acervo livre.',
       credito: { autor: 'Phiarc', licenca: 'CC BY-SA 4.0', fonte: 'Wikimedia Commons' },
     },
     specs: [
@@ -49,7 +50,8 @@ export const COMPONENTES: Componente[] = [
     categoria: 'placa-mae',
     nome: 'B550M K',
     fabricante: 'Gigabyte',
-    resumo: 'Micro-ATX B550 — suporta Ryzen 5000, o caminho de upgrade está aberto.',
+    origem: 'medido',
+    resumo: 'Micro-ATX B550 que suporta Ryzen 5000, com o caminho de upgrade aberto.',
     foto: {
       src: 'images/motherboard.jpg',
       alt: 'Placa-mãe Gigabyte B550M K micro-ATX, socket AM4, quatro slots DDR4',
@@ -61,7 +63,7 @@ export const COMPONENTES: Componente[] = [
       { rotulo: 'Formato', valor: 'Micro-ATX' },
       { rotulo: 'Socket', valor: 'AM4' },
       { rotulo: 'Slots DDR4', valor: '4 (todos ocupados)' },
-      { rotulo: 'BIOS', valor: 'AMI FD — 21/03/2024' },
+      { rotulo: 'BIOS', valor: 'AMI FD, 21/03/2024' },
       { rotulo: 'Rede', valor: 'Realtek PCIe GbE' },
       { rotulo: 'Suporte a CPU', valor: 'Ryzen 3000 / 4000G / 5000' },
     ],
@@ -69,14 +71,15 @@ export const COMPONENTES: Componente[] = [
   {
     id: 'ram',
     categoria: 'memoria',
-    nome: '64 GB DDR4',
-    fabricante: '4 x 16 GB',
+    nome: 'Valkyrie 64 GB DDR4',
+    fabricante: 'Asgard · 4 x 16 GB',
+    origem: 'medido',
     resumo: 'Muita memória, rodando bem abaixo do que os módulos entregam.',
     foto: {
       src: 'images/ram.png',
       alt: 'Módulo de memória DDR4 DIMM de 16 GB com dissipador',
       fidelidade: 'equivalente',
-      nota: 'Módulo DDR4 de 16 GB equivalente. Os pentes instalados são de marca sem catálogo fotográfico público.',
+      nota: 'Módulo DDR4 de 16 GB equivalente. As lojas que vendem a linha Asgard Valkyrie bloqueiam acesso automatizado às imagens.',
       credito: { autor: 'PantheraLeo1359531', licenca: 'CC BY 4.0', fonte: 'Wikimedia Commons' },
     },
     specs: [
@@ -84,9 +87,9 @@ export const COMPONENTES: Componente[] = [
       { rotulo: 'Part number', valor: 'VAM4UX32C18AG-CVALW' },
       { rotulo: 'Velocidade nominal', valor: '3200 MHz CL18' },
       { rotulo: 'Rodando em', valor: '2400 MHz', alerta: true },
-      { rotulo: 'Voltagem', valor: '1,20 V (JEDEC base)' },
-      { rotulo: 'Canais', valor: 'Dual channel (2 por canal)' },
-      { rotulo: 'Slots livres', valor: 'Nenhum — 4 de 4 ocupados' },
+      { rotulo: 'Voltagem XMP', valor: '1,35 V' },
+      { rotulo: 'Voltagem atual', valor: '1,20 V (JEDEC base)', alerta: true },
+      { rotulo: 'Slots livres', valor: 'Nenhum, 4 de 4 ocupados' },
     ],
   },
   {
@@ -94,12 +97,13 @@ export const COMPONENTES: Componente[] = [
     categoria: 'video',
     nome: 'GeForce RTX 3050 8 GB',
     fabricante: 'MSI',
+    origem: 'medido',
     resumo: 'A peça mais moderna do conjunto, limitada pela CPU e por 8 linhas PCIe.',
     foto: {
       src: 'images/gpu.jpg',
       alt: 'Placa de vídeo MSI GeForce RTX 3050 Ventus 2X com dois ventiladores',
       fidelidade: 'equivalente',
-      nota: 'MSI RTX 3050 Ventus 2X — mesma fabricante (subsystem 1462) e mesma linha. A variante instalada é a de 8 GB (GA106).',
+      nota: 'MSI RTX 3050 Ventus 2X, mesma fabricante (subsystem 1462) e mesma linha. A variante instalada é a de 8 GB (GA106).',
       credito: CREDITO_KABUM,
     },
     specs: [
@@ -117,12 +121,13 @@ export const COMPONENTES: Componente[] = [
     categoria: 'armazenamento',
     nome: 'Pichau Gaming PG256X',
     fabricante: 'SSD SATA · 256 GB · unidade C:',
-    resumo: 'Disco de sistema — o ponto mais apertado da máquina hoje.',
+    origem: 'medido',
+    resumo: 'Disco de sistema, o ponto mais apertado da máquina hoje.',
     foto: {
       src: 'images/ssd-boot.jpg',
       alt: 'SSD SATA de 2,5 polegadas em carcaça metálica',
       fidelidade: 'equivalente',
-      nota: 'SSD SATA 2,5 polegadas equivalente. As lojas que vendem o PG256X bloqueiam acesso automatizado às imagens.',
+      nota: 'SSD SATA de 2,5 polegadas equivalente. As lojas que vendem o PG256X bloqueiam acesso automatizado às imagens.',
       credito: CREDITO_KABUM,
     },
     specs: [
@@ -140,12 +145,13 @@ export const COMPONENTES: Componente[] = [
     categoria: 'armazenamento',
     nome: 'XrayDisk 1TB SSD',
     fabricante: 'SSD SATA · 1 TB · unidade E:',
-    resumo: 'Volume de trabalho com folga — destino natural do que sair do C:.',
+    origem: 'medido',
+    resumo: 'Volume de trabalho com folga, destino natural do que sair do C:.',
     foto: {
       src: 'images/ssd-sata.jpg',
       alt: 'SSD SATA de 2,5 polegadas, vista superior',
       fidelidade: 'equivalente',
-      nota: 'SSD SATA 2,5 polegadas equivalente. XrayDisk é marca de venda direta, sem catálogo fotográfico acessível.',
+      nota: 'SSD SATA de 2,5 polegadas equivalente. XrayDisk é marca de venda direta, sem catálogo fotográfico acessível.',
       credito: CREDITO_KABUM,
     },
     specs: [
@@ -163,7 +169,8 @@ export const COMPONENTES: Componente[] = [
     categoria: 'armazenamento',
     nome: 'WD Blue WD10JPVX',
     fabricante: 'Western Digital · 1 TB · unidade D:',
-    resumo: 'HDD 5400 rpm de notebook — arquivo morto, não carga de trabalho.',
+    origem: 'medido',
+    resumo: 'HDD 5400 rpm de notebook, bom para arquivo morto e não para carga de trabalho.',
     foto: {
       src: 'images/hdd.jpg',
       alt: 'Disco rígido Western Digital WD10JPVX de 1 TB, 2,5 polegadas',
@@ -185,11 +192,102 @@ export const COMPONENTES: Componente[] = [
     ocupacao: { usadoPct: 23.4, livreLabel: '705,6 GB livres', totalLabel: '920,9 GB' },
   },
   {
+    id: 'fonte',
+    categoria: 'fonte',
+    nome: 'Core Reactor 750W',
+    fabricante: 'XPG (ADATA)',
+    origem: 'declarado',
+    resumo: 'Fonte 80 Plus Gold com folga larga para o consumo atual e para o upgrade.',
+    foto: {
+      src: 'images/fonte.jpg',
+      alt: 'Fonte XPG Core Reactor, modular, corpo preto com ventoinha frontal',
+      fidelidade: 'equivalente',
+      nota: 'Foto da XPG Core Reactor II VE 750W. A geração exata e a potência (750W ou 850W) ainda precisam ser confirmadas na etiqueta lateral da fonte.',
+      credito: CREDITO_KABUM,
+    },
+    specs: [
+      { rotulo: 'Potência', valor: '750 W (a confirmar)' },
+      { rotulo: 'Certificação', valor: '80 Plus Gold' },
+      { rotulo: 'Modularidade', valor: 'Full modular' },
+      { rotulo: 'Consumo estimado', valor: '~260 W em carga total' },
+      { rotulo: 'Folga disponível', valor: 'Cerca de 65%' },
+      { rotulo: 'Leitura por software', valor: 'Não exposta ao Windows' },
+    ],
+  },
+  {
+    id: 'water-cooler',
+    categoria: 'refrigeracao',
+    nome: 'Gamer Black RGB 240mm',
+    fabricante: 'Rise Mode · water cooler',
+    origem: 'declarado',
+    resumo: 'Radiador de 240 mm com 2 ventoinhas, sobrando capacidade para os 65 W da CPU.',
+    foto: {
+      src: 'images/watercooler.jpg',
+      alt: 'Water cooler Rise Mode Gamer Black RGB com radiador de 240 mm e duas ventoinhas',
+      fidelidade: 'exata',
+      credito: CREDITO_KABUM,
+    },
+    specs: [
+      { rotulo: 'Modelo', valor: 'RM-WCB-02-RGB' },
+      { rotulo: 'Radiador', valor: '240 mm' },
+      { rotulo: 'Ventoinhas', valor: '2 x 120 mm RGB' },
+      { rotulo: 'Compatibilidade', valor: 'AMD AM4 e Intel' },
+      { rotulo: 'TDP da CPU atual', valor: '65 W' },
+      { rotulo: 'Leitura por software', valor: 'Não exposta ao Windows' },
+    ],
+  },
+  {
+    id: 'coolers',
+    categoria: 'refrigeracao',
+    nome: 'Aura 120mm RGB',
+    fabricante: 'Rise Mode · 4 ventoinhas',
+    origem: 'declarado',
+    resumo: 'Quatro ventoinhas de fluxo no gabinete, além das duas do radiador.',
+    foto: {
+      src: 'images/cooler.jpg',
+      alt: 'Ventoinhas Rise Mode Aura de 120 mm com anel de LED RGB',
+      fidelidade: 'exata',
+      credito: CREDITO_KABUM,
+    },
+    specs: [
+      { rotulo: 'Modelo', valor: 'RM-AU-02-RGB' },
+      { rotulo: 'Quantidade', valor: '4 unidades' },
+      { rotulo: 'Tamanho', valor: '120 mm' },
+      { rotulo: 'Iluminação', valor: 'RGB 12V' },
+      { rotulo: 'Total no gabinete', valor: '6 ventoinhas com as do radiador' },
+      { rotulo: 'Leitura por software', valor: 'Não exposta ao Windows' },
+    ],
+  },
+  {
+    id: 'gabinete',
+    categoria: 'gabinete',
+    nome: 'Glass 06X',
+    fabricante: 'Rise Mode · mid tower ATX',
+    origem: 'declarado',
+    resumo: 'Mid tower com frontal e lateral em vidro, comportando as 6 ventoinhas.',
+    foto: {
+      src: 'images/pc.jpg',
+      alt: 'O gabinete Rise Mode Glass 06X montado, com as seis ventoinhas em vermelho, o radiador do water cooler no topo e a RTX 3050 da MSI visível pelo vidro lateral',
+      fidelidade: 'exata',
+      nota: 'Esta é a máquina real, fotografada pelo dono. Dá para conferir pelo vidro a RTX da MSI, o radiador de 240 mm no topo e as ventoinhas de anel.',
+      credito: { autor: 'Erick Dantas', licenca: 'Foto do autor', fonte: 'acervo próprio' },
+    },
+    specs: [
+      { rotulo: 'Formato', valor: 'Mid tower ATX' },
+      { rotulo: 'Frontal', valor: 'Vidro temperado' },
+      { rotulo: 'Lateral', valor: 'Vidro fumê' },
+      { rotulo: 'Ventoinhas instaladas', valor: '6 (4 Aura + 2 do radiador)' },
+      { rotulo: 'Suporte a radiador', valor: '240 mm' },
+      { rotulo: 'Leitura por software', valor: 'Não exposta ao Windows' },
+    ],
+  },
+  {
     id: 'monitor',
     categoria: 'monitor',
     nome: 'UltraGear 27GN60R-B',
     fabricante: 'LG',
-    resumo: 'IPS 27 polegadas a 144 Hz — a saída está à altura do resto do conjunto.',
+    origem: 'medido',
+    resumo: 'IPS de 27 polegadas a 144 Hz, à altura do resto do conjunto.',
     foto: {
       src: 'images/monitor.jpg',
       alt: 'Monitor gamer LG UltraGear 27GN60R-B de 27 polegadas com base em V',
@@ -219,25 +317,25 @@ export const DIAGNOSTICOS: Diagnostico[] = [
     constatacao:
       'VirtualizationFirmwareEnabled retorna False e HypervisorPresent também. O SLAT existe no processador, então é só a chave do firmware que está desligada.',
     acao:
-      'Ativar SVM Mode em Advanced CPU Settings no BIOS. Sem isso, Docker Desktop e WSL2 não sobem — o que trava qualquer stack local de n8n ou Supabase.',
+      'Ativar SVM Mode em Advanced CPU Settings no BIOS. Sem isso, Docker Desktop e WSL2 não sobem, o que trava qualquer stack local de n8n ou Supabase.',
   },
   {
     id: 'disco-c',
     severidade: 'critico',
     titulo: 'O disco de sistema está com 14,6% livres',
     constatacao:
-      'C: tem 34,6 GB livres de 237 GB, e é onde moram o Windows, a pasta de projetos e o stable-diffusion-webui — que sozinho passa de 20 GB entre checkpoints, LoRAs e venv.',
+      'C: tem 34,6 GB livres de 237 GB, e é onde moram o Windows, a pasta de projetos e o stable-diffusion-webui, que sozinho passa de 20 GB entre checkpoints, LoRAs e venv.',
     acao:
       'Mover modelos do Stable Diffusion e node_modules pesados para o E: (435 GB livres) ou D: (705 GB livres). SSD abaixo de 15% livre também perde desempenho de escrita.',
   },
   {
     id: 'cpu-gargalo',
     severidade: 'oportunidade',
-    titulo: 'A CPU é o gargalo — e a placa já aceita a solução',
+    titulo: 'A CPU é o gargalo, e a placa já aceita a solução',
     constatacao:
       'Um quad-core Zen+ de 2019 alimenta uma RTX 3050, e o APU Picasso só entrega 8 linhas PCIe 3.0 para vídeo, enquanto a B550 daria 4.0 x16 com um processador mais novo.',
     acao:
-      'A B550M K com BIOS de 2024 aceita Ryzen 5000 direto. Um Ryzen 5 5600 ou 5700X dobra os núcleos, libera a GPU e destrava o link PCIe — sem trocar placa nem memória.',
+      'A B550M K com BIOS de 2024 aceita Ryzen 5000 direto. Um Ryzen 5 5600 ou 5700X dobra os núcleos, libera a GPU e destrava o link PCIe, sem trocar placa nem memória. A fonte de 750W e o water cooler de 240 mm já absorvem essa troca sem nenhum ajuste.',
     ressalva:
       'O 5600 não tem gráficos integrados: sem a RTX instalada, a máquina fica sem vídeo. Deixa de existir a saída de emergência que a iGPU oferece hoje.',
   },
@@ -246,9 +344,9 @@ export const DIAGNOSTICOS: Diagnostico[] = [
     severidade: 'atencao',
     titulo: 'A memória roda 25% abaixo do que os módulos entregam',
     constatacao:
-      'O part number VAM4UX32C18AG indica módulos de 3200 MHz CL18, mas os quatro rodam a 2400 MHz em 1,20 V — o perfil JEDEC base, com XMP/DOCP desligado no BIOS.',
+      'A linha Asgard Valkyrie é especificada em 3200 MHz CL18 a 1,35 V, mas os quatro módulos rodam a 2400 MHz em 1,20 V, que é o perfil JEDEC base. A voltagem confirma que o XMP nunca foi ativado.',
     acao:
-      'Ativar o perfil DOCP no BIOS. Num APU a memória alimenta a iGPU e o Infinity Fabric, então o ganho aparece além dos benchmarks sintéticos.',
+      'Ativar o perfil XMP ou DOCP no BIOS. Num APU a memória alimenta a iGPU e o Infinity Fabric, então o ganho aparece além dos benchmarks sintéticos.',
     ressalva:
       'Com 4 DIMMs num controlador Zen+, 3200 MHz raramente estabiliza. Tente 2933 primeiro e valide com memtest antes de subir.',
   },
@@ -257,8 +355,8 @@ export const DIAGNOSTICOS: Diagnostico[] = [
     severidade: 'atencao',
     titulo: 'A rede negocia 100 Mbps numa placa gigabit',
     constatacao:
-      'A Realtek PCIe GbE suporta 1 Gb/s, mas o link subiu a 100 Mbps — um décimo do que a placa e o Windows entregam.',
+      'A Realtek PCIe GbE suporta 1 Gb/s, mas o link subiu a 100 Mbps, um décimo do que a placa e o Windows entregam.',
     acao:
-      'Verificar o cabo (Cat5 antigo ou crimpagem com pares faltando é a causa mais comum) e a porta do roteador ou switch.',
+      'Verificar o cabo, já que Cat5 antigo ou crimpagem com pares faltando é a causa mais comum, e depois a porta do roteador ou switch.',
   },
 ];
